@@ -30,6 +30,14 @@ jobs:
    - name: Checkout Code
      uses: actions/checkout@v2
 
+   - name: Show default daemon json content
+     run: |
+      if [ -f /etc/docker/daemon.json ]; then
+      sudo cat /etc/docker/daemon.json
+       else
+      echo "/etc/docker/daemon.json does not exist."
+        fi
+
    - name: Set up Docker
      uses: docker-practice/actions-setup-docker@v1
      with:
